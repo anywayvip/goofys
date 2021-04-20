@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  s3fs:
+    container_name: s3fs
+    image: gseldon/goofys:latest
+    restart: unless-stopped
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - 'apparmor:unconfined'
+    devices:
+      - /dev/fuse
+    volumes:
+      - /mnt/tmp:/mnt/s3:rshared
+      - ./credentials:/root/.aws/credentials
+    environment:
+        ENDPOINT: https://storage.yandexcloud.net
+        BACKETNAME: goofys
+#volumes: 
+#    storage_s3:
