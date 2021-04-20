@@ -50,4 +50,5 @@ services:
 
 ---
 [Main Project](https://github.com/kahing/goofys)
+
 [Install](https://github.com/kahing/goofys/issues/527#issuecomment-673909445)
