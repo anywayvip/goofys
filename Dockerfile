@@ -3,7 +3,7 @@ FROM golang:alpine AS build
 WORKDIR /go/src/app
 
 RUN mkdir -p /go/src/app/github.com/kahing/goofys/ && \
-    mkdir -p /mnt/s3
+    mkdir -p /mnt/s3 
 
 RUN apk update && apk add git
 RUN cd /go/src/app/github.com/kahing/ && \
