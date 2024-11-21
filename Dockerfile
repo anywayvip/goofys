@@ -27,8 +27,17 @@ ENV MOUNTPOINT=/mnt/s3
 ENV CREDPOINT=/root/.aws/credentials
 ENV HOME=/root
 ENV S3FS_ARGS=''
+ENV AWS_ACCESS_KEY_ID=
+ENV AWS_SECRET_ACCESS_KEY=
 
 VOLUME [ "/mnt/s3" ]
+
+touch /root/.aws/credentials/.pass
+{
+  echo "[default]"
+  echo "aws_access_key_id = $AWS_ACCESS_KEY_ID"
+  echo "aws_secret_access_key = $AWS_SECRET_ACCESS_KEY"
+} > /root/.aws/credentials/.pass
 
 COPY --from=build /go/bin/goofys /bin/goofys
 COPY --from=build /go/src/app/github.com/kahing/goofys /go/goofys
